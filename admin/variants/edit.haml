@@ -1,0 +1,9 @@
+= error_messages_for :variant
+- form_for(@variant, :url => object_url, :html => { :method => :put }) do |f|
+= render :partial => "form", :locals => { :f => f }
+%p{:class=>"form-buttons"}
+  = button t("update")
+  or
+  = link_to t("cancel"), admin_product_images_url(@product), :id => "cancel_link"
+
+

@@ -1,0 +1,66 @@
+- @selected = :products
+- @title = 'Products - Radiant CMS - Publishing for Small Teams'
+
+%div{:id => "content_wrapper", :style => "background-color: #ffffff" }
+  %div{:id => "content"}
+    %div{:class => "split_content"}  
+      %h1= t("listing_products")
+    
+      = image_tag "spinner.gif", :plugin=>"spree", :style => "display:none", :id => 'busy_indicator'
+      %div{:id => "new-product"}
+    
+      %table{:class => "index"}
+        %tr
+          %th SKU 
+          %th Name
+          %th Master Price
+          %th Actions
+    
+        - @collection = [{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'},{:id => '1', :sku=>'123', :name=>'test', :price=>'5.00'}]
+        - @collection = []
+        - @collection.each do |product|
+          %tr{:id => "dom_id_#{product['id']}"}   
+            %td= product[:sku]
+            %td= product[:name]
+            %td= product[:price]
+            %td{:class => "actions"}
+              = #link_to_edit product
+              %a{:href=>"/admin/products/edit"} Edit
+              &nbsp;
+              = #link_to_clone product
+              %a{:href=>"/admin/products"} Clone
+              &nbsp;
+              = #link_to_delete product
+              %a{:href=>"/admin/products"} Delete
+    
+      = #will_paginate(:previous_label => "&#171; Previous", :next_label => "Next &#187;")
+
+  
+%div{:id => "sidebar_wrapper"}
+  %div{:id => "content", :class => "sidebar"}
+    %form
+      %div{:class => "box"}
+        %h3 Search
+        %p
+          %label Name
+          %input{:type=>"text", :name => "name_contains", :size => 15}
+        %p
+          %label SKU
+          %input{:type=>"text", :name => "variants_including_master_sku_contains", :size => 15}
+        %p{:class => "form-buttons"}
+          %input{:type=>"button", :name => "submit", :value => "Search"}
+
+    %div{:class => "box", :style => "margin-top: 15px;"}
+      %h3 Product Configuration
+      %ul
+        %li 
+          %a{:href => "/admin/products/option_types"} Option Types
+        %li 
+          %a{:href => "/admin/properties"} Properties
+        %li 
+          %a{:href => "/admin/prototypes"} Prototypes
+
+#actions
+  %ul
+    %li
+      %a{:href=>"/admin/products/new"} New Product

@@ -1,0 +1,37 @@
+- @selected = :products
+- @title = 'Edit Product - Radiant CMS - Publishing for Small Teams'
+
+%div{:id => "content_wrapper"}
+  %div{:id => "content"}
+    %div{:class => "content-right"}  
+      %h1 Product Title Here
+      %h2 Product Id Here
+      -#form_for(@product, :url => object_url, :html => { :method => :put, :multipart => true }) do |f| %>
+      %form
+        = #render :partial => 'form', :locals => {:f => f}
+        = render :partial => 'form'
+  
+%div{:id => "sidebar_wrapper"}
+  %div{:id => "content", :class => "sidebar"}
+    %div{:class => "box", :style => "margin-top: 15px;"}
+      %h3 New Product
+      %ul
+        %li 
+          %a{:href => "/admin/products/edit"} Product Details
+        %li 
+          %a{:href => "/admin/images"} Images
+        %li 
+          %a{:href => "/admin/variants"} Variants
+        %li 
+          %a{:href => "/admin/products/prototypes"} Option Types
+        %li 
+          %a{:href => "/admin/products/prototypes"} Product Properties
+        %li 
+          %a{:href => "/admin/products/prototypes"} Taxons
+
+#actions
+  %ul
+    %li
+      %a{:href=>"/admin/products"} Save
+    %li
+      %a{:href=>"/admin/products"} Cancel

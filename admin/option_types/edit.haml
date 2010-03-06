@@ -1,0 +1,13 @@
+%h1
+  = t("editing_option_type")
+= error_messages_for :option_type
+
+- form_for(:option_type, :url => object_url, :html => { :method => :put }) do |f|
+%fieldset
+  %legend
+    = t("editing_option_type")
+  = render :partial => "form", :locals => { :f => f }
+%p{:class=>"form-buttons"}
+  = button "Save"
+  or
+  = link_to "Cancel", admin_product_images_url(@product), :id => "cancel_link"

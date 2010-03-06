@@ -1,0 +1,20 @@
+%table.index
+  %thead
+    %tr
+      %th
+        = t("name")
+      %th
+  %tbody
+    - @prototypes.each do |prototype|
+    %tr{ :id => "row_#{prototype.id}" }
+      %td
+        = prototype.name
+      %td.actions
+        = link_to icon('add') + ' ' + t("select"), select_admin_prototype_url(prototype),  :class => 'ajax iconlink select_properties_from_prototype'
+    - end
+    - if @prototypes.empty?
+    %tr
+      %td{ :colspan => "2" }
+        - t("none")
+        \.
+    - end

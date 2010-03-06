@@ -1,0 +1,35 @@
+- @selected = :products
+- @title = 'Products - Radiant CMS - Publishing for Small Teams'
+
+%div{:id=>"content"}
+  %h1
+    = t("properties")
+  #properties
+  = #image_tag "spinner.gif", :plugin=>"spree", :style => "display:none", :id => 'busy_indicator'
+  %table.index
+    %thead
+      %tr
+        %th
+          = t("name")
+        %th
+          = t("presentation")
+        %th
+    %tbody
+      - @properties = [{:name => 'Property 1', :presentation => 'Test'}, {:name => 'Property 2', :presentation => 'Test'}]
+      - @properties.each do |property|
+        %tr{ :id => "dom_id_#{property[:name]}" }
+          %td
+            = property[:name]
+          %td
+            = property[:presentation]
+          %td.actions
+            = #link_to_edit(property)
+            %a{:href=>"edit"} Edit
+            \&nbsp;
+            = #link_to_delete(property)
+            %a{:href=>""} Delete
+
+#actions
+  %ul
+    %li
+      %a{:href=>"/admin/properties/new"} New Property

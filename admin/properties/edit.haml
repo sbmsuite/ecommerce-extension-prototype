@@ -1,0 +1,17 @@
+- @selected = :products
+- @title = 'Edit Properties - Radiant CMS - Publishing for Small Teams'
+
+%div{:id=>"content"}
+  %h1
+    = t("editing_property")
+  = #error_messages_for :property
+  - #form_for(:property, :url => object_url, :html => { :method => :put }) do |f|
+  %form
+  = render :partial => "form"#, :locals => { :f => f }
+
+#actions
+  %ul
+    %li
+      %a{:href=>"/admin/products"} Update
+    %li
+      %a{:href=>"/admin/products"} Cancel

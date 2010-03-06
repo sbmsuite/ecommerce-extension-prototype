@@ -1,0 +1,56 @@
+- @selected = :reports
+- @title = 'Reports - Radiant CMS - Publishing for Small Teams'
+
+-@item_total = 5.00
+-@charge_total = 3.00
+-@credit_total = 0.0
+-@sales_total = 8.00
+%div{:id => "content_wrapper"}
+  %div{:id => "content"}
+    %div{:class => "content-right"}  
+      %h1
+        = t("sales_totals")
+      %table.admin-report
+        %tbody
+          %tr
+            %th{ :scope => "row" }
+              = t("item_total")
+              \:
+            %td{ :align => "right" }
+              = number_to_currency @item_total
+          %tr
+            %th{ :scope => "row" }
+              = t("charge_total")
+              \:
+            %td{ :align => "right" }
+              = number_to_currency @charge_total
+          %tr
+            %th{ :scope => "row" }
+            = t("credit_total")
+            \:
+            %td{ :align => "right" }
+              = number_to_currency @credit_total
+          %tr
+            %th{ :scope => "row" }
+              = t("sales_total")
+              \:
+            %td{ :align => "right" }
+              = number_to_currency @sales_total
+
+
+%div{:id => "sidebar_wrapper"}
+  %div{:id => "content", :class => "sidebar"}
+    %div{:class => "box"}
+      %form
+        %label= t("date_range")
+        %div
+          %div{:style=>"float:left; width:40%;"}
+            %input{:type=>"text", :class=>"date", :size=>10}
+            %br
+            %label{:class=>"sub"}= t("start")
+          %div{:style=>"float:right;"}
+            %input{:type=>"text", :class=>"date", :size=>10}
+            %br
+            %label= t("stop")
+        %p
+          %input{:type=>"button", :value=>"#{t("search")}"}

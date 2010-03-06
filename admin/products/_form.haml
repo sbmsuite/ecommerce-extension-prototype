@@ -1,0 +1,98 @@
+%div
+  %div{:style=>"width: 60%; float: left;"}
+    %p
+      %label Name
+      %input{:type=>"text", :class=>"fullwidth title", :name => 'name'}
+      =# f.error_message_on :name
+
+    %p
+      %label Description
+      %textarea{:style=>"height: 375px; width: 98%;", :name => 'description'}
+      =# f.error_message_on :description
+
+  %div{:style=>"width: 35%; float: right;"}
+    %p
+      %label Master Price
+      %input{:type=>"text", :class=>"fullwidth title", :name => 'price'}
+      =# f.error_message_on :price
+
+    %p
+      %label Cost Price
+      %input{:type=>"text", :class=>"fullwidth title", :name => 'cost_price'}
+      =# f.error_message_on :cost_price
+
+    %p
+      %label Available On
+      %input{:type=>"text", :class=>"date", :name => 'date'}
+
+    %p
+      %label SKU
+      %input{:type=>"text", :class=>"", :name => 'sku', :width => 16}
+
+      - #unless @product.has_variants?
+    %p
+      %label On Hand
+      %input{:type=>"text", :class=>"", :name => 'on_hand', :width => 16}
+
+    %p
+      =# f.label :tax_category_id, t("tax_category")
+      =# f.collection_select(:tax_category_id, @tax_categories, :id, :name, {:include_blank => true}, {"style" => "width:200px"})
+      =# f.error_message_on :tax_category%>
+      %label Tax Category
+      %select{:name=>"tax_category"}        
+      = #f.error_message_on :tax_category
+
+    %h3 Shipping Details
+    %table#layouts.index
+      %tbody
+        %tr
+          %td
+            =#f.label :weight, t("weight")
+            %label Weight         
+          %td
+            =# f.text_field :weight, :size => 4
+            %input{:type=>"text", :name=>"weight", :size => 4}
+        %tr
+          %td
+            =# f.label :height, t("height")
+            %label Height          
+          %td
+            =# f.text_field :height, :size => 4
+            %input{:type=>"text", :name=>"height", :size => 4}
+        %tr
+          %td
+            =# f.label :width, t("width")
+            %label Width
+          %td
+            =# f.text_field :width, :size => 4
+            %input{:type=>"text", :name=>"width", :size => 4}
+        %tr
+          %td
+            =# f.label :depth, t("depth")
+            %label Depth          
+          %td
+            =# f.text_field :depth, :size => 4
+            %input{:type=>"text", :name=>"depth", :size => 4}
+        %tr
+          %td
+            =# f.label :shipping_category_id, t("shipping_categories")
+            %label Shipping Category          
+          %td
+            =# f.collection_select(:shipping_category_id, @shipping_categories, :id, :name, {:include_blank => true}, {"style" => "width:200px"})
+            %select{:name=>"shipping_category"}        
+            = #f.error_message_on :shipping_category
+
+
+%div{:id=>"content", :class => "clear", :style =>"padding: 0; padding-bottom: 30px;"}
+  %h2 Metadata
+  %p  
+    =# f.label :meta_keywords, t("meta_keywords")%><br />
+    =# f.text_field :meta_keywords, :class => 'fullwidth' %>
+    %label Meta Keywords
+    %input{:type=>"text", :name=>"meta_keywords", :class=>"fullwidth"}
+
+  %p
+    =# f.label :meta_description, t("meta_description")
+    =# f.text_field :meta_description, :class => 'fullwidth'
+    %label Meta Description
+    %input{:type=>"text", :name=>"meta_description", :class=>"fullwidth"}

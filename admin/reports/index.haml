@@ -1,0 +1,23 @@
+- @selected = :reports
+- @title = 'Reports - Radiant CMS - Publishing for Small Teams'
+
+- @reports = [ { :name => "sales_total", :description => "Test" } ]
+
+%div{:id=>"content"}
+  %h1
+    = t("listing_reports")
+  %table{:class=>"index"}
+    %thead
+      %tr
+        %th
+          = t("name")
+        %th
+          = t("description")
+    %tbody
+    - @reports.each do |key, value|
+      %tr
+        %td
+          %a{:href=>"sales_total"}= key
+        %td
+          = value
+

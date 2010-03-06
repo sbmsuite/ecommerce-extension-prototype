@@ -1,0 +1,11 @@
+%h4= "New Image"
+- form_for(:image, :url => { :controller => 'images', :action => 'create' }, :html => { :multipart => true }) do |form|
+  %table{:class=>"basic-table"}
+    = render :partial => "form", :locals => { :f => form }
+  %p{:class=>"form-buttons"}
+    = button "Update"
+    or
+    = link_to "Cancel", "#", :id => "cancel_link"
+
+ 
+ 

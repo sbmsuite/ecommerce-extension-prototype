@@ -1,0 +1,25 @@
+- @selected = :products
+- @title = 'New Product - Radiant CMS - Publishing for Small Teams'
+
+%div{:id => "content_wrapper"}
+  %div{:id => "content"}
+    %div{:class => "content-right"}  
+      %h1 Product Title Here
+      %h2 Product Id Here
+      -#form_for(@product, :url => object_url, :html => { :method => :put, :multipart => true }) do |f| %>
+      %form
+        = #render :partial => 'form', :locals => {:f => f}
+        = render :partial => 'form'
+  
+%div{:id => "sidebar_wrapper"}
+  %div{:id => "content", :class => "sidebar"}
+    %div{:class => "box", :style => "margin-top: 15px;"}
+      %h3 New Product
+      %p Create new products by entering the basic product information. After the product has been saved you will be able to add images, configure options types, make variants, and edit all other product properties.
+
+#actions
+  %ul
+    %li
+      %a{:href=>"/admin/products"} Create
+    %li
+      %a{:href=>"/admin/products"} Cancel
